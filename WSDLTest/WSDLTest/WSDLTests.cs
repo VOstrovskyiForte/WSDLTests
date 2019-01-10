@@ -7,6 +7,7 @@ using NUnit.Framework;
 using System.Linq;
 using NUnit.Framework.Internal;
 using WSDLTest.Holiday;
+using System.Reflection;
 
 namespace WSDLTest
 {
@@ -191,7 +192,7 @@ namespace WSDLTest
             var file = File.CreateText(filepath);
             file.WriteLine(TestData);
             file.Close();
-            var lastRunReportFilePath = Path.Combine(FilePath, "LastRunReport.txt");
+            var lastRunReportFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "LastRunReport.txt");
             File.Copy(filepath, lastRunReportFilePath, true);
         }
     }
