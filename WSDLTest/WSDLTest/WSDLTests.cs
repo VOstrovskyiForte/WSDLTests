@@ -172,11 +172,11 @@ namespace WSDLTest
         {
             if (TestContext.CurrentContext.Result.FailCount == 0)
             {
-                TestData += TestContext.CurrentContext.Test.Name + " end with result Pass" + System.Environment.NewLine;
+                TestData += DateTime.Now.ToString("YYYY-MM-DD hh:mm:ss") + TestContext.CurrentContext.Test.Name + " end with result Pass" + System.Environment.NewLine;
             }
             else
             {
-                TestData += TestContext.CurrentContext.Test.Name + " end with result Fail"
+                TestData += DateTime.Now.ToString("YYYY-MM-DD hh:mm:ss") + TestContext.CurrentContext.Test.Name + " end with result Fail"
                     + Environment.NewLine + "With Message " + TestContext.CurrentContext.Result.Message + Environment.NewLine + "Call stack: " + TestContext.CurrentContext.Result.StackTrace + System.Environment.NewLine;
             }
         }
