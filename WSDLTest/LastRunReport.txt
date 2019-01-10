@@ -1,2 +1,0 @@
-GetHolidaysForDateRangeE(Canada,01/01/2018 00:00:00,01/01/2017 00:00:00,"Server was unable to process request") end with result Pass
-
