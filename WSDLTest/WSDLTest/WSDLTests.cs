@@ -23,7 +23,14 @@ namespace WSDLTest
         public const int TestTimeout = 100000;
 
         //Path to log with results
-        public static string FilePath = @"G:\Report";
+        public static string FilePath = @"D:\Report";
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            if (!Directory.Exists(FilePath))
+                Directory.CreateDirectory(FilePath);
+        }
 
         //Action that will be executed before each test
         [SetUp]
@@ -96,7 +103,7 @@ namespace WSDLTest
             {
                 Assert.IsTrue(e.Message.Contains(exceptionMessage));
             }
-            Assert.Fail("Exception expected!");
+            //
         }
 
         /// <summary>
@@ -106,18 +113,19 @@ namespace WSDLTest
         /// <param name="starTime"></param>
         /// <param name="endTime"></param>
         [TestCaseSource(typeof(DataSource), nameof(DataSource.GetHolidaysForDateRangeE)), Timeout(TestTimeout)]
-        public void GetHolidaysForDateRangeE(Country country, DateTime starTime, DateTime endTime)
+        public void GetHolidaysForDateRangeE(Country country, DateTime starTime, DateTime endTime, string exceptionMessage)
         {
             try
             {
                 var holidays = Client.GetHolidaysForDateRange(country, starTime, endTime);
-            }
-            catch (Exception)
-            {
-                return; }
-            Assert.Fail("Exception expected");
-
         }
+            catch (Exception e)
+            {
+                Assert.IsTrue(e.Message.Contains(exceptionMessage));
+            }
+
+
+}
 
         /// <summary>
         /// Check GetHolidaysForDateRange comparing to GetHolidaysForDateRange

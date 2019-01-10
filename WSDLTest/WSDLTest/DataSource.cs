@@ -52,9 +52,9 @@ namespace WSDLTest
         {
             get
             {
-                yield return new TestCaseData(Country.Canada, new DateTime(1700, 1, 1), new DateTime(2100, 1, 1));
-                yield return new TestCaseData(Country.Canada, new DateTime(2018, 1, 1), new DateTime(2017, 1, 1));
-                yield return new TestCaseData(null, new DateTime(2016, 1, 1), new DateTime(2017, 1, 1));
+                yield return new TestCaseData(Country.Canada, new DateTime(1700, 1, 1), new DateTime(2100, 1, 1), "The maximum message size quota for incoming messages (65536) has been exceeded");
+                yield return new TestCaseData(Country.Canada, new DateTime(2018, 1, 1), new DateTime(2017, 1, 1), "Server was unable to process request");
+                yield return new TestCaseData(null, new DateTime(2016, 1, 1), new DateTime(2017, 1, 1), "The maximum message size quota for incoming messages (65536) has been exceeded") ;
             }
         }
 
