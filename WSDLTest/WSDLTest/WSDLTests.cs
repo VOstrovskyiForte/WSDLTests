@@ -191,6 +191,8 @@ namespace WSDLTest
             var file = File.CreateText(filepath);
             file.WriteLine(TestData);
             file.Close();
+            var lastRunReportFilePath = Path.Combine(FilePath, "LastRunReport.txt");
+            File.Copy(filepath, lastRunReportFilePath, true);
         }
     }
 
